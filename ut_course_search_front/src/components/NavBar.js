@@ -8,7 +8,7 @@ export function NavBar(){
     const {theme, setTheme} = useTheme();
     const [colorMode, setColorMode] = useColorMode();
     return (
-        <nav className="flex items-start justify-between flex-wrap">
+        <nav className="flex items-end justify-end flex-wrap w-screen">
             <div className="flex items-center mr-6">
                 <button className="bg-burntOrange hover:bg-burntOrangeDark rounded inline-flex items-center mr-3">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 px-2">

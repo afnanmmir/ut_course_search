@@ -3,16 +3,21 @@ import useColorMode from '@/hooks/useColorMode'
 import Image from 'next/image'
 import { NavBar } from '@/components/NavBar';
 import { Search } from '@/components/Search';
+import { Detail } from '@/utils/Utils';
 
 export default function Home() {
 
   const [colorMode, setColorMode] = useColorMode();
   return (
     <div className="bg-white dark:bg-charcoal h-screen">
-        <div className="flex justify-end items-end">
-          <NavBar />
-        </div>
-      <Search />
+      <div className="flex items-start justify-start">
+            <NavBar />
+      </div>
+      <Detail.Container>
+        <Detail.ContentContainer>
+          <Search />
+        </Detail.ContentContainer>
+      </Detail.Container>
     </div>
   )
 }
