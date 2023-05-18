@@ -21,6 +21,5 @@ def get_course_urls():
 
 links = get_course_urls()
 # pickle the links
-with open('course_links.pkl', 'wb') as f:
-    pickle.dump(links, f)
+print(links)
 
