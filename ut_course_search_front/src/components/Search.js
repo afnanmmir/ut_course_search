@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from "react";
 import { ResponseCard, LoadingCard } from '@/utils/Utils';
 import { data } from '@/test_data/data';
+import queryIndex, {ResponseSources, QueryResponse} from '@/api/queryIndex'
 
 export function Search(){
     const {theme, setTheme} = useTheme();
@@ -13,6 +14,7 @@ export function Search(){
     const [search, setSearch] = useState('');
     const [answered, setAnswered] = useState(false);
     const [answer, setAnswer] = useState('');
+    const [sources, setSources] = useState([]);
     const [currentSearch, setCurrentSearch] = useState('');
     const [loading, setLoading] = useState(false);
     
@@ -20,13 +22,13 @@ export function Search(){
         e.preventDefault();
         console.log("I have been submitted");
         setAnswered(true);
-        setAnswer(data.response);
-        setCurrentSearch(search);
         setLoading(true);
-        setTimeout(() => {
+        setCurrentSearch(search);
+        queryIndex(search).then((response) => {
             setLoading(false);
-        }
-        , 2000);
+            setAnswer(response.text)
+            setSources(response.sources)
+        })
     }
 
     return (
