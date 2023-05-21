@@ -1,6 +1,15 @@
 import Link from 'next/link';
 import * as React from 'react'
 
+export function SectionContainer(props) {
+  return (
+    <div
+      className="grid items-start grid-cols-1 gap-y-8 py-3"
+      {...props}
+    />
+  )
+}
+
 export function ResponseCard({query, answer}){
     return (
         <div className='p-4 border border-charcoal dark:border-burntOrange rounded-md whitespace-pre-wrap'>
@@ -23,6 +32,16 @@ export function LoadingCard(){
       <span className="sr-only">Loading...</span>
     </div>
   )
+}
+
+export function CourseCard({course}){
+    return (
+        <div className='p-4 border border-charcoal dark:border-burntOrange rounded-md whitespace-pre-wrap'>
+            <p className='text-charcoal dark:text-white font-bold p-1 text-lg py-1'>{course.title}</p>
+            <hr className="w-full border-gray-500 border-solid border-t p-1"></hr>
+            <p className='text-charcoal dark:text-white p-1'>{course.description}</p>
+        </div>
+    )
 }
 
 const Container = React.forwardRef(

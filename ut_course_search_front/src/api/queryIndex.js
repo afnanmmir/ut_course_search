@@ -12,7 +12,7 @@ export let QueryResponse = {
 };
   
 const queryIndex = async (query) => {
-    const queryURL = new URL("http://localhost:5601/query?text=1");
+    const queryURL = new URL("http://localhost:5601/courses?");
     queryURL.searchParams.append("text", query);
   
     const response = await fetch(queryURL, { mode: "cors" });
@@ -24,5 +24,21 @@ const queryIndex = async (query) => {
   
     return queryResponse;
 };
+
+export const queryChat = async (query) => {
+    const queryURL = new URL("http://localhost:5601/chat?");
+    console.log(query)
+    queryURL.searchParams.append("text", query);
+    console.log(queryURL)
+  
+    const response = await fetch(queryURL, { mode: "cors" });
+    if (!response.ok) {
+      return { text: "Error in query", sources: [] };
+    }
+  
+    const queryResponse = (await response.json());
+  
+    return queryResponse;
+}
   
   export default queryIndex;
