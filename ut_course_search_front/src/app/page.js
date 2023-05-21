@@ -9,7 +9,7 @@ export default function Home() {
 
   const [colorMode, setColorMode] = useColorMode();
   return (
-    <div className="bg-white dark:bg-charcoal h-screen">
+    <div className="bg-white dark:bg-charcoal max-h-screen min-h-screen overflow-y-auto">
       <div className="flex items-start justify-start">
             <NavBar />
       </div>
