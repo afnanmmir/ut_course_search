@@ -3,9 +3,7 @@ import os
 from dotenv import load_dotenv
 from tqdm.auto import tqdm
 import pickle
-import json
 import pinecone
-import datetime
 from time import sleep
 import sys
 import random

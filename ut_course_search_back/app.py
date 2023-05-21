@@ -1,18 +1,12 @@
 from flask import Flask, request, jsonify, make_response
-from bs4 import BeautifulSoup
-import requests
-import re
 from llama_index import GPTVectorStoreIndex, TrafilaturaWebReader, LangchainEmbedding, ServiceContext, embeddings, LLMPredictor, StorageContext, load_index_from_storage
 from llama_index.storage.docstore import SimpleDocumentStore
 from llama_index.storage.index_store import SimpleIndexStore
 from llama_index.vector_stores import SimpleVectorStore
 import openai
-from langchain.chat_models import ChatOpenAI
 from dotenv import load_dotenv
 import os
 from flask_cors import CORS
-import time
-import json
 import pinecone
 import db.index_methods as index_methods
 from responses.responses import Response

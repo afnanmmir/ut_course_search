@@ -30,7 +30,6 @@ def query_index(pinecone_index, query, top_k=20):
     res_embed = openai.Embedding.create(input=[query], model=EMBED_MODEL)
     query_embedding = res_embed['data'][0]['embedding']
     res_query = pinecone_index.query(queries=[query_embedding], top_k=top_k, include_metadata=True)
-    print(res_query)
     return res_query
 
 def extract_context_from_match(match):

@@ -1,8 +1,3 @@
-import pinecone
-import openai
-import os
-from dotenv import load_dotenv
-
 class Response:
     def __init__(self):
         self.pinecone_response = None
