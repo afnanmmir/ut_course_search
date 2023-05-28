@@ -24,7 +24,7 @@ response = None
 def home():
     return "This is a test"
 
-def get_course_and_description(query_response, top_k: int = 20, similarity_threshold: float = 0.79):
+def get_course_and_description(query_response, top_k: int = 20, similarity_threshold: float = 0.70):
     courses_and_descriptions = []
     response = {}
     matches = query_response['results'][0]['matches'][0:top_k]
@@ -60,11 +60,11 @@ def get_chat():
 
 
 
-if __name__ == "__main__":
-    load_dotenv()
-    print("Initializing index...")
-    # initialize_index(get_course_urls(), os.getenv("INDEX_DIR"))
-    index = index_methods.init_pinecone(index_name)
-    response = Response()
-    print("Index initialized!")
-    app.run(host="0.0.0.0",debug=True, port=5601)
+# if __name__ == "__main__":
+load_dotenv()
+print("Initializing index...")
+# initialize_index(get_course_urls(), os.getenv("INDEX_DIR"))
+index = index_methods.init_pinecone(index_name)
+response = Response()
+print("Index initialized!")
+app.run(host="0.0.0.0",debug=True)

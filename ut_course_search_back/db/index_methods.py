@@ -48,7 +48,7 @@ def extract_context(request_result, top_k = 20, similarity_threshold = 0.79):
 
 def create_query(query: str, context: str):
     formatted_query = (
-        "Here are the context information for the query:"
+        "Here are the context information about classes at the University of Texas at Austin for the query:"
         "\n-------------------------------------------\n"
         f"{context}"
         "\n-------------------------------------------\n"
@@ -60,7 +60,7 @@ def query_chat(context_text: str, query: str):
     openai.api_key = os.getenv("OPENAI_API_KEY")
     query_with_context = create_query(query, context_text)
     messages = [
-        {"role": "system", "content": "Your job is to only answer queries about information about college courses."},
+        {"role": "system", "content": "Your job is to only give advice about what classes to take at the University of Texas at Austin given the query. This includes career advice, course advice, and professor advice."},
         {"role": "system", "content": "If the query does not pertain to this topic, answer with 'I apologize, but that is not related to the University of Texas Course Catalog. As an AI language model, I can answer queries related to courses, professors, and departments at the University of Texas. Please let me know if you have any course-related questions.'"},
         {"role": "user", "content": query_with_context},
     ]

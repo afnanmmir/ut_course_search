@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: ./ut_course_search_back
+      dockerfile: Dockerfile
+    image: flask-backend
+    container_name: flask-server
+    command: flask run --host=0.0.0.0
+    ports:
+      - 5000:5000
+    networks:
+      - app-network
+    volumes:
+      - ./ut_course_search_back/:/usr/src/app
+  client:
+    build:
+      context: ./ut_course_search_front
+      dockerfile: Dockerfile
+    image: nextjs-frontend
+    container_name: nextjs-front
+    command: npm run dev
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+    volumes:
+      - ./ut_course_search_front/:/usr/src/app
+    depends_on:
+      - server
+networks:
+  app-network:
+    driver: bridge
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+# build:
+#   context: ./ut_course_search_back
+#   dockerfile: Dockerfile
+# image: flask-backend
+# container_name: flask-server
+# command: python3 app.py
+# ports:
+#   - 5000:5000
+# volumes:
+#   - ./ut_course_search_back:/usr/src/app
+# networks:
+#   - app-network
+    
+    
+      
