@@ -61,13 +61,9 @@ response = None
 
 # if __name__ == "__main__":
 def create_app():
+    global index, response
     app = Flask(__name__)
     CORS(app)
-    index = None
-    index_name = "ut-courses"
-    response = None
-
-
 
     @app.route("/")
     def home():

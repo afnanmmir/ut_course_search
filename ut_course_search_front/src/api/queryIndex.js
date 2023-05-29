@@ -12,7 +12,8 @@ export let QueryResponse = {
 };
   
 const queryIndex = async (query) => {
-    const queryURL = new URL("http://localhost:5000/courses?");
+
+    const queryURL = new URL("http://localhost:8000/courses?");
     queryURL.searchParams.append("text", query);
   
     const response = await fetch(queryURL, { mode: "cors" });
@@ -26,7 +27,7 @@ const queryIndex = async (query) => {
 };
 
 export const queryChat = async (query) => {
-    const queryURL = new URL("http://localhost:5000/chat?");
+    const queryURL = new URL("http://localhost:8000/chat?");
     console.log(query)
     queryURL.searchParams.append("text", query);
     console.log(queryURL)

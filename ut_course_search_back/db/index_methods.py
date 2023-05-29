@@ -26,6 +26,7 @@ def init_pinecone(index_name):
     return pinecone_index
 
 def query_index(pinecone_index, query, top_k=20):
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     EMBED_MODEL = "text-embedding-ada-002"
     res_embed = openai.Embedding.create(input=[query], model=EMBED_MODEL)
     query_embedding = res_embed['data'][0]['embedding']
