@@ -18,9 +18,15 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
+# remove existing files from nginx directory
+RUN rm -rf /usr/share/nginx/html/*
+
 COPY --from=build /app/out /usr/share/nginx/html
+
+# add nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port
 EXPOSE 8080
 
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+CMD CMD ["nginx", "-g", "daemon off;"]
