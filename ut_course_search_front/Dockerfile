@@ -21,7 +21,6 @@ FROM nginx:stable-alpine
 COPY --from=build /app/.next /usr/share/nginx/html
 
 # Expose port
-ENV HOST 0.0.0.0
 EXPOSE 8080
 
 CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
