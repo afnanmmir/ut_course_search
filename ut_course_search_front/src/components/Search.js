@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import React, { useState, useEffect } from "react";
 import { ResponseCard, LoadingCard, CourseCard, SectionContainer } from '@/utils/Utils';
-import { data } from '@/test_data/data';
 import queryIndex, {ResponseSources, QueryResponse, queryChat} from '@/api/queryIndex'
 
 export function Search(){
