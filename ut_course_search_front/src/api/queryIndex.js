@@ -13,7 +13,7 @@ export let QueryResponse = {
   
 const queryIndex = async (query) => {
 
-    const queryURL = new URL("http://localhost:8000/courses?");
+    const queryURL = new URL("http://ut-course-search-server-lsti4tutia-uc.a.run.app/courses?");
     queryURL.searchParams.append("text", query);
   
     const response = await fetch(queryURL, { mode: "cors" });
@@ -27,7 +27,7 @@ const queryIndex = async (query) => {
 };
 
 export const queryChat = async (query) => {
-    const queryURL = new URL("http://localhost:8000/chat?");
+    const queryURL = new URL("http://ut-course-search-server-lsti4tutia-uc.a.run.app/chat?");
     console.log(query)
     queryURL.searchParams.append("text", query);
     console.log(queryURL)

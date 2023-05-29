@@ -1,10 +1,11 @@
 # Use an official Node.js runtime as the base image
-FROM node:18-alpine
+FROM node:18-alpine AS build
 
 # Set the working directory in the container
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
 
 # Install dependencies
 COPY package*.json ./
@@ -13,7 +14,15 @@ RUN npm install --silent
 # Copy app source code
 COPY . .
 
-# Expose port
-EXPOSE 3000
+RUN npm run build
 
-CMD [ "npm", "run", "dev" ]
+FROM nginx:stable-alpine
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expose port
+ENV PORT 8080
+ENV HOST 0.0.0.0
+EXPOSE 8080
+
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
