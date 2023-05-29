@@ -9,6 +9,13 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org
 
+# Set environment variables
+ENV FLASK_APP=app.py
+ENV OPENAI_API_KEY=OPENAI_API_KEY
+ENV INDEX_DIR=INDEX_DIR
+ENV PINECONE_API_KEY=PINECONE_API_KEY
+ENV PINECONE_ENV=PINECONE_ENV
+
 # Copy app source code
 COPY . .
 
