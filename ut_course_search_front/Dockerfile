@@ -21,7 +21,6 @@ FROM nginx:stable-alpine
 COPY --from=build /app/.next /usr/share/nginx/html
 
 # Expose port
-ENV PORT 8080
 ENV HOST 0.0.0.0
 EXPOSE 8080
 
