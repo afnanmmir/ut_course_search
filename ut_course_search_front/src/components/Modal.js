@@ -22,16 +22,16 @@ const Modal = ({isVisible, onClose}) => {
                     <p className='text-charcoalDark dark:text-white p-3'>Examples of use cases: 
                     <br/>
                     <br/>
-                    - "I want to take a class on Machine Learning"
+                    - ``I want to take a class on Machine Learning``
                     <br/>
                     <br/>
-                    - "I want to learn more about photography"
+                    - ``I want to learn more about photography``
                     <br/>
                     <br/>
-                    - "Can you compare and contrast ECE461P (Data Science Principles) and ECE461J (Data Science Lab)?"
+                    - ``Can you compare and contrast ECE461P (Data Science Principles) and ECE461J (Data Science Lab)?``
                     <br/>
                     <br/>
-                    - "I want to become a better public speaker"
+                    - ``I want to become a better public speaker``
                     <br/>
                     </p>
                 </div>

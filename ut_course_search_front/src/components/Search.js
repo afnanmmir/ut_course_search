@@ -83,7 +83,7 @@ export function Search(){
                 {loading === true ? <LoadingCard /> : null}
                 {answered === true ? <ResponseCard query={currentSearch} answer={chatAnswer} /> : null}
                 {courseAnswered === true ? sources.map((source, index) => (
-                    <SectionContainer>
+                    <SectionContainer key={index}>
                         <CourseCard course={source} key={index} />
                     </SectionContainer>
                 )) : null}
