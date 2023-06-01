@@ -20,6 +20,14 @@ export function ResponseCard({query, answer}){
     )
 }
 
+export function ErrorCard(){
+  return (
+    <div className='p-10 border border-red-600 dark:border-red-600 bg-red-500 opacity-50 rounded-md whitespace-pre-wrap'>
+        <p className='text-charcoal dark:text-white font-bold p-1 text-lg py-1'>Error found when making a query</p>
+    </div>
+)
+}
+
 export function LoadingCard(){
   return(
     <div role="status" className="max-w-full animate-pulse border border-charcoal dark:border-burntOrange rounded-md p-4">

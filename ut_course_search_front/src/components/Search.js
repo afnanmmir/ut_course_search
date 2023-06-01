@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import React, { useState, useEffect } from "react";
-import { ResponseCard, LoadingCard, CourseCard, SectionContainer } from '@/utils/Utils';
+import { ResponseCard, LoadingCard, CourseCard, SectionContainer, ErrorCard } from '@/utils/Utils';
 import queryIndex, {ResponseSources, QueryResponse, queryChat} from '@/api/queryIndex'
 
 export function Search(){
@@ -18,6 +18,7 @@ export function Search(){
     const [currentSearch, setCurrentSearch] = useState('');
     const [loading, setLoading] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [error, setError] = useState(false);
     
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -40,6 +41,7 @@ export function Search(){
             setChatAnswer('');
             setAnswered(false);
             setShowButton(false);
+            setError(true);
         })
     }
 
@@ -57,6 +59,7 @@ export function Search(){
             setLoading(false);
             setAnswered(false);
             setChatAnswer('');
+            setError(true);
         })
     }
 
@@ -91,14 +94,14 @@ export function Search(){
                         onChange={e => setSearch(e.target.value)} 
                         />
                 </form>
-                {showButton === true ? button() : null}
+                {showButton === true && error === false ? button() : null}
                 {loading === true ? <LoadingCard /> : null}
                 {answered === true ? <ResponseCard query={currentSearch} answer={chatAnswer} /> : null}
-                {courseAnswered === true ? sources.map((source, index) => (
+                {courseAnswered === true && error === false ? sources.map((source, index) => (
                     <SectionContainer key={index}>
                         <CourseCard course={source} key={index} />
                     </SectionContainer>
-                )) : null}
+                )) : courseAnswered === true && error === true ? <ErrorCard /> : null}
             </div>
         </div>
     )

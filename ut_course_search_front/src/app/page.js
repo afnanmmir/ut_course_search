@@ -36,8 +36,8 @@ export default function Home() {
       </div>
       <Detail.Container>
         <Detail.ContentContainer>
-          <Modal onClose={() => setShowModal(false)} isVisible={showModal}/>
           <Search />
+          <Modal onClose={() => setShowModal(false)} isVisible={showModal}/>
         </Detail.ContentContainer>
       </Detail.Container>
     </div>
