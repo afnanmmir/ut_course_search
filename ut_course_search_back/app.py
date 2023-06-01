@@ -90,8 +90,10 @@ def create_app():
             query_response = index_methods.query_index(index, query, top_k=20)
             response.set_pinecone_response(query_response)
             courses_and_descriptions = get_course_and_description(response.get_pinecone_response())
+            print(f"Query: {query}")
             return courses_and_descriptions, 200
         except Exception as e:
+            print(f"Exception: {e}")
             return {"message": "Error in getting courses"}, 500
 
     @app.route("/chat", methods=["GET"])
@@ -104,8 +106,10 @@ def create_app():
             chat_response = index_methods.query_chat(context, query)
             response.set_openai_response(chat_response)
             text = chat_response['choices'][0]['message']['content']
+            print(f"Text: {text}")
             return {"text": text}, 200
         except Exception as e:
+            print(f"Exception: {e}")
             return {"message": "Error in getting chat"}, 500
     load_dotenv()
     print("Initializing index...")

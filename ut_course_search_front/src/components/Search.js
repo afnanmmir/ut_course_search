@@ -33,6 +33,13 @@ export function Search(){
             setSources(response.response)
             setCourseAnswered(true);
             setShowButton(true);
+        }).catch((error) => {
+            console.log(error);
+            setLoading(false);
+            setCourseAnswered(false);
+            setChatAnswer('');
+            setAnswered(false);
+            setShowButton(false);
         })
     }
 
@@ -45,6 +52,11 @@ export function Search(){
             setLoading(false);
             setAnswered(true);
             setChatAnswer(response.text);
+        }).catch((error) => {
+            console.log(error);
+            setLoading(false);
+            setAnswered(false);
+            setChatAnswer('');
         })
     }
 

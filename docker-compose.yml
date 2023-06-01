@@ -4,7 +4,7 @@ services:
   server:
     build:
       context: ./ut_course_search_back
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     image: flask-backend
     container_name: flask-server
     command: flask run --host=0.0.0.0
@@ -17,7 +17,7 @@ services:
   client:
     build:
       context: ./ut_course_search_front
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     image: nextjs-frontend
     container_name: nextjs-front
     command: npm run dev
