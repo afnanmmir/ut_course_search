@@ -13,7 +13,7 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-charcoal max-h-screen min-h-screen overflow-y-auto">
+    <div className="bg-white dark:bg-charcoal flex flex-col min-h-screen overflow-y-auto">
       <div className="flex items-start justify-start">
       <nav className="flex items-end justify-end flex-wrap w-screen">
             <div className="flex items-center mr-6">
@@ -34,22 +34,15 @@ export default function Home() {
             </div>
         </nav>
       </div>
-      <Detail.Container>
+      <Detail.Container className="flex-grow">
         <Detail.ContentContainer>
           <Search />
           <Modal onClose={() => setShowModal(false)} isVisible={showModal}/>
         </Detail.ContentContainer>
       </Detail.Container>
+      <div className="flex justify-center inset-x-0 bottom-0">
+            <p className="text-charcoal dark:text-white pb-4 font-thin font-sans">Built with ❤️ by Afnan Mir</p>
+      </div>
     </div>
   )
 }
-{/* <div className='bg-white dark:bg-charcoal w-screen h-screen flex justify-center items-center'>
-      
-</div>
-<button onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-      className='bg-charcoal dark:bg-white text-white dark:text-charcoal'>
-        Toggle Color Mode
-</button>
-<div className='text-charcoal dark:text-white font-roboto'>
-  Hello World!
-</div> */}
