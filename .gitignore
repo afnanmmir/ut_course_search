@@ -2,4 +2,3 @@ Playground/
 test_data
 .env
 __pycache__/
-*.bin
