@@ -11,7 +11,7 @@ export let QueryResponse = {
     sources: []
 };
 
-let dev = true;
+let dev = false;
   
 const queryIndex = async (query) => {
 
