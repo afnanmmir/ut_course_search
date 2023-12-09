@@ -1,5 +1,5 @@
 # Use an official Python runtime as the base image
-FROM python:3.8
+FROM python:3.10-slim-buster
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -15,6 +15,9 @@ ENV OPENAI_API_KEY=OPENAI_API_KEY
 ENV INDEX_DIR=INDEX_DIR
 ENV PINECONE_API_KEY=PINECONE_API_KEY
 ENV PINECONE_ENV=PINECONE_ENV
+ENV FAISS_BIN=FAISS_BIN
+ENV COURSES=COURSES
+ENV COURSES_INDEX=COURSES_INDEX
 
 # Copy app source code
 COPY . .

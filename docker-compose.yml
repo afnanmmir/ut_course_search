@@ -7,7 +7,6 @@ services:
       dockerfile: Dockerfile.dev
     image: flask-backend
     container_name: flask-server
-    command: flask run --host=0.0.0.0
     ports:
       - 5000:5000
     networks:

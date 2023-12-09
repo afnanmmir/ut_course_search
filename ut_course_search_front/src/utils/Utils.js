@@ -43,11 +43,12 @@ export function LoadingCard(){
 }
 
 export function CourseCard({course}){
+  let description = course.description.replace(/\n /g, '\n');
     return (
         <div className='p-4 border border-charcoal dark:border-burntOrange rounded-md whitespace-pre-wrap'>
-            <p className='text-charcoal dark:text-white font-bold p-1 text-lg py-1'>{course.title}</p>
+            <p className='text-charcoal dark:text-white font-bold p-1 text-lg py-1'>{course.title.trim()}</p>
             <hr className="w-full border-gray-500 border-solid border-t p-1"></hr>
-            <p className='text-charcoal dark:text-white p-1'>{course.description}</p>
+            <p className='text-charcoal dark:text-white p-1'>{description}</p>
         </div>
     )
 }

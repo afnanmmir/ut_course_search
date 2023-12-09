@@ -1,9 +1,24 @@
 # Use an official Python runtime as the base image
-FROM python:3.8
+FROM --platform=linux/amd64 python:3.10-slim-buster
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+
+RUN apt-get update && \
+    apt-get install -y wget && \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O ~/miniconda.sh && \
+    bash ~/miniconda.sh -b -p $HOME/miniconda && \
+    rm ~/miniconda.sh && \
+    apt-get clean
+
+# Add Miniconda to PATH
+ENV PATH="/root/miniconda/bin:${PATH}"
+
+# Update Conda
+RUN conda update -n base conda
+
+# Install faiss-cpu in the base environment
 
 # Install dependencies
 COPY requirements.txt ./
@@ -11,6 +26,8 @@ RUN pip3 install -r requirements.txt --trusted-host pypi.org --trusted-host pypi
 
 # Copy app source code
 COPY . .
+
+ENV PYTHONPATH=/usr/src/app
 
 # Expose port
 EXPOSE 5000

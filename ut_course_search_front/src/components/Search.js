@@ -34,6 +34,7 @@ export function Search(){
             setSources(response.response)
             setCourseAnswered(true);
             setShowButton(true);
+            setError(false);
         }).catch((error) => {
             console.log(error);
             setLoading(false);
@@ -91,7 +92,9 @@ export function Search(){
                         type='text'
                         value={search} 
                         placeholder='Search for a course'
-                        onChange={e => setSearch(e.target.value)} 
+                        onChange={e => {
+                            setSearch(e.target.value)
+                        }} 
                         />
                 </form>
                 {showButton === true && error === false ? button() : null}
