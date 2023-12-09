@@ -11,11 +11,11 @@ export let QueryResponse = {
     sources: []
 };
 
-let dev = false;
+let dev = true;
   
 const queryIndex = async (query) => {
 
-    const baseURL = (dev === true ? "http://localhost:5000/courses?" : "https://ut-course-search-server-lsti4tutia-uc.a.run.app/courses?");
+    const baseURL = (dev === true ? "http://localhost:8000/courses?" : "https://ut-course-search-server-lsti4tutia-uc.a.run.app/courses?");
     const queryURL = new URL(baseURL);
     queryURL.searchParams.append("text", query);
   

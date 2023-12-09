@@ -1,5 +1,5 @@
 # Use an official Python runtime as the base image
-FROM python:3.10-slim-buster
+FROM --platform=linux/amd64 python:3.10-slim-buster
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -19,12 +19,14 @@ ENV FAISS_BIN=FAISS_BIN
 ENV COURSES=COURSES
 ENV COURSES_INDEX=COURSES_INDEX
 
+ENV PYTHONPATH=/usr/src/app
+
 # Copy app source code
 COPY . .
 
 # Expose port
 EXPOSE 8000
 
-CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 app:'create_app()'
+CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 server_app:'app'
 
 
