@@ -10,6 +10,43 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../.
 from utils.Course import Course
 from model.embedding_retriever import EmbeddingRetriever
 
+# TODO: Make it so that the Course class is imported from utils.Course
+class Course():
+    def __init__(self, title: str, description: str, plain_text: str):
+        self.title = title
+        self.description = description
+        self.plain_text = plain_text
+
+    # Create getter and setter methods for each attribute
+    def get_title(self):
+        return self.title
+    
+    def set_title(self, title):
+        self.title = title
+    
+    def get_description(self):
+        return self.description
+    
+    def set_description(self, description):
+        self.description = description
+
+    def get_plain_text(self):
+        return self.plain_text
+    
+    def set_plain_text(self, plain_text):
+        self.plain_text = plain_text
+
+    # Create a method to return a dictionary of the object
+    def to_dict(self):
+        return {
+            'title': self.title,
+            'description': self.description,
+            'plain_text': self.plain_text
+        }
+    
+    def __str__(self):
+        return f"Course(title={self.title}, description={self.description}, plain_text={self.plain_text})"
+
 class FaissDB:
     def __init__(self, index_name, dimension=786):
         self.index_name = index_name
